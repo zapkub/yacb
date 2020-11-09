@@ -1,0 +1,13 @@
+{
+    "watch": [
+        "**/*.ts",
+        ".env"
+    ],
+    "ignore": [
+        "**/*.test.ts",
+        "dist/**/*"
+    ],
+    "ext": "ts,mjs,js,json,graphql",
+    "exec": "etsc -p . && node ./dist/index.js",
+    "legacyWatch": true
+}
