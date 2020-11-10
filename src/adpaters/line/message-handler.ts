@@ -26,7 +26,7 @@ export class LineMessageHandler {
         return req.body;
     }
 
-    public async responseTextMessage(replyToken: string, message: Message) {
+    public async responseTextMessage(replyToken: string, message: Message | Message[]) {
         try {
             const x = await this.lineClient.replyMessage(
                 replyToken,

@@ -2,10 +2,10 @@ import { } from '@line/bot-sdk';
 import { Handler } from 'express';
 import { DialogFlowIntentResolver } from '../adpaters/dialogflow';
 import { LineMessageHandler } from '../adpaters/line';
-import { Covid19CountryInfoResponseResolverVisitor } from './covid19-country-info';
-import { Covid19SelfAssessmentResponseResolverVisitor } from './covid19-self-assessment-q1';
+import { FindAvailableRoomVisitor } from './find-available-room';
 import { Input, ResponseResolverVisitor } from './response-resolver-visitor';
 import { SessionRepository } from './session.repository';
+import { BypassResultResolverVisitor } from './ิbypass';
 
 
 
@@ -19,8 +19,10 @@ export function getIntentProcessorHandler(): Handler {
     const sessionRepository = new SessionRepository();
 
     const responseResolverVisitors: ResponseResolverVisitor[] = [
-        new Covid19CountryInfoResponseResolverVisitor(),
-        new Covid19SelfAssessmentResponseResolverVisitor(),
+        // new Covid19CountryInfoResponseResolverVisitor(),
+        // new Covid19SelfAssessmentResponseResolverVisitor(),
+        new FindAvailableRoomVisitor(),
+        new BypassResultResolverVisitor(),
     ];
 
 
@@ -49,7 +51,6 @@ export function getIntentProcessorHandler(): Handler {
                     if (!visitor.shouldVisit(input)) {
                         return;
                     }
-
                     const responseMessage = await visitor.visit(input);
                     await lineMessageHandler.responseTextMessage(event.replyToken, responseMessage);
                 }));

@@ -11,6 +11,6 @@ export type Input  = {
 export interface ResponseResolverVisitor {
 
     shouldVisit(input: Input): boolean;
-    visit(input: Input): Promise<Message>;
+    visit(input: Input): Promise<Message | Message[]>;
 
 }

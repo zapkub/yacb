@@ -4,6 +4,6 @@ export const config = {
     dialogFlowLanguageCode: process.env.DIALOGFLOW_LANGUAGE_CODE,
     lineChannelAccessToken: process.env.LINE_CHANNEL_ACCESS_TOKEN,
     googleCloudCredentialPath: process.env.GOOGLE_APPLICATION_CREDENTIALS,
-    port: process.env.PORT || 19002,
+    port: process.env.PORT || 9901,
     dataGovTHApiKey: process.env.DATA_GOV_TH_API_KEY,
 };

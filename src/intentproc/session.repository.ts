@@ -2,9 +2,8 @@ const uuid = require('uuid');
 
 export class SessionRepository {
 
+
     private storeUserIdToSs: {[key: string]: string} = {};
-
-
 
     public async get(userId: string): Promise<string> {
         return this.storeUserIdToSs[userId];

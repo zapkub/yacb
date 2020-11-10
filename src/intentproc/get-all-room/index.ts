@@ -1,11 +1,12 @@
+import { Message } from '@line/bot-sdk';
 import { Input, ResponseResolverVisitor } from '../response-resolver-visitor';
 
 export class GetAllRoomIntent implements ResponseResolverVisitor {
-    shouldVisit(input: Input): boolean {
-        throw new Error("Method not implemented.");
+    public shouldVisit(input: Input): boolean {
+        return input.intentResult.action === 'get-all-room';
     }
-    visit(input: Input): Promise<import("@line/bot-sdk").Message> {
-        throw new Error("Method not implemented.");
+    public visit(input: Input): Promise<Message> {
+            return {};
     }
 
 }
