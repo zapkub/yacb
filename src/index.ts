@@ -1,6 +1,7 @@
 import { json } from 'body-parser';
 import express from 'express';
 import { config } from './config';
+import { getFulfillmentProcessorHandler } from './fulfillment';
 import { getIntentProcessorHandler } from './intentproc';
 const morgan = require('morgan');
 
@@ -13,6 +14,7 @@ async function bootstrap() {
 
 
     app.post('/line', getIntentProcessorHandler());
+    app.post('/dialogflowfulfillment', getFulfillmentProcessorHandler());
 
     app.all('*', (req, res) => {
         res.status(404);

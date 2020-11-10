@@ -3,6 +3,11 @@ import { Request } from 'express';
 import { config } from '../../config';
 
 
+function sleep(ms: number) {
+    return new Promise((resolve) => {
+      setTimeout(resolve, ms);
+    });
+  }
 
 
 export class LineMessageHandler {
